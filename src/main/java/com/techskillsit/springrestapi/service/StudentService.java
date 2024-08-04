@@ -1,9 +1,13 @@
 package com.techskillsit.springrestapi.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.techskillsit.springrestapi.exceptions.InvalidInputException;
+import com.techskillsit.springrestapi.exceptions.ResourceNotFoundException;
 import com.techskillsit.springrestapi.model.Student;
 import com.techskillsit.springrestapi.repository.StudentRepository;
 
@@ -32,4 +36,20 @@ public class StudentService {
 		
 	}
 
+	public List<Student> getAllStudents() {
+		return studentRepository.findAll();
+	}
+
+	public Student getOneStudent(int id) throws ResourceNotFoundException {
+		Optional<Student> optional =  studentRepository.findById(id);
+		if(optional.isEmpty())
+			throw new ResourceNotFoundException("Invlid ID Given");
+		return optional.get();
+	}
+ //Optional<Student> : student : null
+
+	public void deleteStudent(int id) {
+		 studentRepository.deleteById(id);
+		
+	}
 }
