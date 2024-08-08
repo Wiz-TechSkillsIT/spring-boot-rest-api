@@ -1,19 +1,8 @@
-package com.techskillsit.springrestapi.model;
+package com.techskillsit.springrestapi.dto;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-
-@Entity
-public class Project { //table = project
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+public class ProjectResponseDto {
 	private int id; 
 	
 	private String title; 
@@ -22,8 +11,7 @@ public class Project { //table = project
 	
 	private LocalDate proposedEndDate;
 	
-	@ManyToOne//(cascade = CascadeType.ALL)
-	private Team team;
+	private String teamTitle;
 
 	public int getId() {
 		return id;
@@ -57,13 +45,13 @@ public class Project { //table = project
 		this.proposedEndDate = proposedEndDate;
 	}
 
-	public Team getTeam() {
-		return team;
+	public String getTeamTitle() {
+		return teamTitle;
 	}
 
-	public void setTeam(Team team) {
-		this.team = team;
-	}  
+	public void setTeamTitle(String teamTitle) {
+		this.teamTitle = teamTitle;
+	}
 	
 	
 }

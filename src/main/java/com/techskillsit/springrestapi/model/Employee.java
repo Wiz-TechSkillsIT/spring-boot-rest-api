@@ -10,6 +10,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Employee {
@@ -25,6 +26,9 @@ public class Employee {
 	
 	private LocalDate dateOfJoining;
 
+	@OneToOne
+	private UserInfo userInfo;
+	
 	public int getId() {
 		return id;
 	}
@@ -56,6 +60,14 @@ public class Employee {
 
 	public void setDateOfJoining(LocalDate dateOfJoining) {
 		this.dateOfJoining = dateOfJoining;
+	}
+
+	public UserInfo getUserInfo() {
+		return userInfo;
+	}
+
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
 	} 
 	
 	
